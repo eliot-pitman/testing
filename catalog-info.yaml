@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: bip-reference-person
+  description: BIP Reference Person
+  tags:
+    - java
+    - data
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+  annotations:
+    github.com/project-slug: department-of-veterans-affairs/bip-reference-person
+    backstage.io/techdocs-ref: url:s3://zk-backstage-test/default/api/bip-reference-person/
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: insert-art
+  system: insert-project
+  definition:
+    $text: https://github.com/department-of-veterans-affairs/bip-reference-person/blob/development/bip-reference-person/src/main/resources/openapi/openapi.yml
