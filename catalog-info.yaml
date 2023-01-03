@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: bip-reference-person
+  namespace: hello
   description: BIP Reference Person
   tags:
     - java
