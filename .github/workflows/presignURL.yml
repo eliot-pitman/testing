@@ -10,7 +10,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
-          role-to-assume: arn:aws:iam::491891987197:policy/Github_Actions
+        # role-to-assume: arn:aws:iam::491891987197:policy/Github_Actions
           aws-region: us-east-1
       - name: create presigned url
         run: |
