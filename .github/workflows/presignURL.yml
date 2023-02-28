@@ -19,8 +19,7 @@ jobs:
         run: |
           git config --global user.name 'eliot-pitman-va'
           git config --global user.email 'pitman_eliot@bah.com'
-          git pull
-          echo "hello" > report.txt
+          echo "$url" > report.txt
       - name: Commit report
         run: |
           git add .
