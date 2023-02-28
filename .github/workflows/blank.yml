@@ -6,11 +6,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Create report file
-        run: hello > report.txt
-      - name: Commit report
         run: |
           git config --global user.name 'eliot-pitman-va'
           git config --global user.email 'pitman_eliot@bah.com'
+          git pull
+          echo "hello" > report.txt
+      - name: Commit report
+        run: |
           git add .
           git commit -am "Automated report"
           git push
