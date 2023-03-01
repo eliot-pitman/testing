@@ -12,9 +12,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
         # role-to-assume: arn:aws:iam::491891987197:policy/Github_Actions
           aws-region: us-east-1
-      - name: create presigned url
-        run: |
-          url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
       - name: Create report file
         run: |
           url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
