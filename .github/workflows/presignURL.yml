@@ -36,5 +36,5 @@ jobs:
       - name: place object in file and commit
         run: |
           git add .
-          git commmit -m "adds image"
+          git commit -m "adds image"
           git status 
