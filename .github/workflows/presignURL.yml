@@ -11,25 +11,14 @@ jobs:
   S3PackageUpload:
     runs-on: ubuntu-latest
     steps:
-      - name: Git clone the repository
-        uses: actions/checkout@v3
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: arn:aws:iam::491891987197:role/github_actions
           role-session-name: github_actions
           aws-region: ${{ env.AWS_REGION }}
-#   report:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Configure AWS credentials from Test account
-#         uses: aws-actions/configure-aws-credentials@v1
-#         with:
-#           aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
-#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
-#         # role-to-assume: arn:aws:iam::491891987197:policy/Github_Actions
-#           aws-region: us-east-1
+      - name: Git clone the repository
+        uses: actions/checkout@v2
       - name: Create report file
         run: |
           url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
@@ -37,6 +26,8 @@ jobs:
           git config --global user.name 'eliot-pitman-va'
           git config --global user.email 'pitman_eliot@bah.com'
           echo "$url" > report.txt
+      - name: Commit report
+        run: |
           git add .
           git commit -am "Automated report"
           git push
