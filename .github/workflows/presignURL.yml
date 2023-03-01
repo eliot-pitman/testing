@@ -18,24 +18,27 @@ jobs:
           role-session-name: github_actions
           aws-region: ${{ env.AWS_REGION }}
       - name: Git clone the repository
-        uses: actions/checkout@v2
-        with:
-          repo-token: ${{ secrets.TOKEN }}
-      - name: Create report file
-        run: |
+      - uses: actions/checkout@v3
+      - run: |
+          git config user.name eliot-pitman-va
+          git config user.email pitman_eliot@bah.com
           url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
           echo "$url"
-          git config --global user.name 'eliot-pitman-va'
-          git config --global user.email 'pitman_eliot@bah.com'
           echo "$url" > report.txt
-          
-      - name: get object
-        run: |
           aws s3api get-object --bucket practicebah --key IMG_4141.jpg my_images.jpg
-          
-      - name: place object in file and commit
-        run: |
           git add .
           git commit -m "adds image"
           git status 
           git push
+
+          
+#       - name: get object
+#         run: |
+#           aws s3api get-object --bucket practicebah --key IMG_4141.jpg my_images.jpg
+          
+#       - name: place object in file and commit
+#         run: |
+#           git add .
+#           git commit -m "adds image"
+#           git status 
+#           git push
