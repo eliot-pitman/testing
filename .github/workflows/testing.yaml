@@ -1,0 +1,29 @@
+name: Push commit
+on: workflow_dispatch
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure AWS credentials from Test account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
+        # role-to-assume: arn:aws:iam::491891987197:policy/Github_Actions
+          aws-region: us-east-1
+      - name: create presigned url
+        run: |
+          url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
+      - name: Create report file
+        run: |
+          url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
+          echo "$url"
+          git config --global user.name 'eliot-pitman-va'
+          git config --global user.email 'pitman_eliot@bah.com'
+          echo "$url" > report.txt
+      - name: Commit report
+        run: |
+          git add .
+          git commit -am "Automated report"
+          git push
