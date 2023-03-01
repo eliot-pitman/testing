@@ -8,7 +8,7 @@ permissions:
       id-token: write   # This is required for requesting the JWT
       contents: read    # This is required for actions/checkout
 jobs:
-  S3PackageUpload:
+  S3verification:
     runs-on: ubuntu-latest
     steps:
       - name: configure aws credentials
@@ -17,6 +17,10 @@ jobs:
           role-to-assume: arn:aws:iam::491891987197:role/github_actions
           role-session-name: github_actions
           aws-region: ${{ env.AWS_REGION }}
+  commit:
+    runs-on: ubuntu-latest
+    needs: S3verification
+    steps:
       - name: Git clone the repository
         uses: actions/checkout@v2
       - name: Create report file
