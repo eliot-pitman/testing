@@ -20,7 +20,7 @@ jobs:
       - name: Git clone the repository
         uses: actions/checkout@v2
         with:
-          github-token: ${{ secrets.TOKEN }}
+          repo-token: ${{ secrets.TOKEN }}
       - name: Create report file
         run: |
           url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
