@@ -32,3 +32,9 @@ jobs:
       - name: get object
         run: |
           aws s3api get-object --bucket practicebah --key IMG_4141.jpg my_images.jpg
+          
+      - name: place object in file and commit
+        run: |
+          git add .
+          git commmit -m "adds image"
+          git status 
