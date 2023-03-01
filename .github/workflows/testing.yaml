@@ -5,16 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Configure AWS credentials from Test account
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
-        # role-to-assume: arn:aws:iam::491891987197:policy/Github_Actions
-          aws-region: us-east-1
+#    - name: Configure AWS credentials from Test account
+#      uses: aws-actions/configure-aws-credentials@v1
+#       with:
+#         aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
+#        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
+#         aws-region: us-east-1
       - name: Create report file
         run: |
-
           url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
           echo "$url"
           git config --global user.name 'eliot-pitman-va'
