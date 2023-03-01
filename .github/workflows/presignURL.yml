@@ -22,8 +22,8 @@ jobs:
         with: 
           token: ${{secrets.TOKEN}}
       - run: |
-          git config user.name eliot-pitman-va
-          git config user.email pitman_eliot@bah.com
+          git config user.name "eliot-pitman-va"
+          git config user.email "pitman_eliot@bah.com"
           url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
           echo "$url"
           echo "$url" > report.txt
