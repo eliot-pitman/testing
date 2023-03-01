@@ -14,6 +14,7 @@ jobs:
           aws-region: us-east-1
       - name: Create report file
         run: |
+
           url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
           echo "$url"
           git config --global user.name 'eliot-pitman-va'
