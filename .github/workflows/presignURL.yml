@@ -29,6 +29,6 @@ jobs:
           git config --global user.email 'pitman_eliot@bah.com'
           echo "$url" > report.txt
           
-      - name: copy s3
+      - name: get object
         run: |
-          aws s3 sync . s3://practicebah
+          aws s3api get-object --bucket practicebah --key IMG_4141.jpg my_images.jpg
