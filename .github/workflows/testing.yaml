@@ -10,7 +10,6 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
-          aws-region: us-east-1
       - name: Create report file
         run: |
           url=$(aws s3 presign s3://practicebah/IMG_4141.jpg --expires-in 604800)
