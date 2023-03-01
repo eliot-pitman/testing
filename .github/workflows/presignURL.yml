@@ -4,23 +4,26 @@ env:
   BUCKET_NAME : "practicebah"
   AWS_REGION : "us-east-1"
 # permission can be added at job level or workflow level    
-# permissions:
-#       id-token: write   # This is required for requesting the JWT
-#       contents: read    # This is required for actions/checkout
+permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read    # This is required for actions/checkout
+      actions: write
 jobs:
   S3verification:
     runs-on: ubuntu-latest
     steps:
-#       - name: configure aws credentials
-#         uses: aws-actions/configure-aws-credentials@v1
-#         with:
-#           role-to-assume: arn:aws:iam::491891987197:role/github_actions
-#           role-session-name: github_actions
-#           aws-region: ${{ env.AWS_REGION }}
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::491891987197:role/github_actions
+          role-session-name: github_actions
+          aws-region: ${{ env.AWS_REGION }}
       - name: Git clone the repository
         uses: actions/checkout@v2
       - name: Create report file
         run: |
+          url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
+          echo "$url"
           git config --global user.name 'eliot-pitman-va'
           git config --global user.email 'pitman_eliot@bah.com'
           echo "$url" > report.txt
