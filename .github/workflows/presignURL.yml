@@ -38,3 +38,4 @@ jobs:
           git add .
           git commit -m "adds image"
           git status 
+          git push
