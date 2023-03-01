@@ -8,6 +8,16 @@ permissions:
       id-token: write   # This is required for requesting the JWT
       contents: read    # This is required for actions/checkout
       actions: write
+      checks: write
+      deployments: write
+      issues: write
+      discussions: write
+      packages: write
+      pages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
 jobs:
   S3verification:
     runs-on: ubuntu-latest
