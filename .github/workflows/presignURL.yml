@@ -21,8 +21,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Create report file
         run: |
-          url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
-          echo "$url"
           git config --global user.name 'eliot-pitman-va'
           git config --global user.email 'pitman_eliot@bah.com'
           echo "$url" > report.txt
