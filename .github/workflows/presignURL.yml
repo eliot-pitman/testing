@@ -19,8 +19,8 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
       - name: Git clone the repository
         uses: actions/checkout@v2
-        with: 
-          github_token: ${{ secrets.TOKEN }}
+#         with: 
+#           github_token: ${{ secrets.TOKEN }}
       - name: Create report file
         run: |
           url=$(aws s3 presign s3://practicebah/IMG_4141.jpg)
@@ -28,6 +28,7 @@ jobs:
           git config --global user.name 'eliot-pitman-va'
           git config --global user.email 'pitman_eliot@bah.com'
           echo "$url" > report.txt
-          git add .
-          git commit -m "Automated report"
-          git push
+          
+      - name: copy s3
+        run: |
+          aws s3 sync . s3://practicebah
