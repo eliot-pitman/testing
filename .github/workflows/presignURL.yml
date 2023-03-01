@@ -37,8 +37,6 @@ jobs:
           git config --global user.name 'eliot-pitman-va'
           git config --global user.email 'pitman_eliot@bah.com'
           echo "$url" > report.txt
-      - name: Commit report
-        run: |
           git add .
           git commit -am "Automated report"
           git push
